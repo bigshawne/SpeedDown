@@ -38,6 +38,22 @@ public class Spawner : MonoBehaviour
     {
         int index = Random.Range(0, platforms.Count);
 
-        Instantiate(platforms[index], spawnPosition, Quaternion.identity);
+        int spikeNum = 0;
+
+        if (index == 4)
+        {
+            spikeNum++;
+        }
+
+        if (spikeNum > 1)
+        {
+            spikeNum = 0;
+            countTime = spawnTime;
+            return;
+        }
+        
+        GameObject newPlatform = Instantiate(platforms[index], spawnPosition, Quaternion.identity);
+        // Make all the spawned platform be the children of the startLine GameObject
+        newPlatform.transform.SetParent(this.gameObject.transform);
     }
 }
