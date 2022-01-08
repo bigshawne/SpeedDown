@@ -54,13 +54,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Spike"))
         {
             animator.SetTrigger("dead");
-
         }
     }
 
     public void PlayerDead()
     {
         playerDead = true;
+        GameManager.GameOver(playerDead);
     }
 
     public void OnDrawGizmosSelected() 
